@@ -93,15 +93,15 @@ class AdminUsersController extends Controller
         $inputs = $request->except('_method','_token');//->all();
         if($file = $request->file('photo_id')){
             $name = date('Y-m-d_his_').$file->getClientOriginalName();
-            $file->move('/uploads/images/profile_picture/',$name);
-            $photo = Photo::create($name);
+            $file->move('uploads/images/profile_picture/',$name);
+            $photo = Photo::create(['file'=>$name]);
             $inputs['photo_id'] = $photo->id;
         }
         if(trim($request->password)!=''){
             $inputs['password'] = bcrypt($request->password);            
         }
         else
-          $inputs = $request->except('password');
+          $inputs = $request->except('_method','_token','password');
         User::where('id',$id)->update($inputs);
         $this->notification('bg-danger','Success');
         return redirect('admin/users');
@@ -119,7 +119,7 @@ class AdminUsersController extends Controller
         unlink(public_path().$user->photo->file);
         $user->delete();
         $this->notification('bg-danger','Success');
-        return redirect('admin/users/index');
+        return redirect('admin/users');
     }
     public function notification($alert,$msg){
         Session::flash('alert-bg-color',$alert);

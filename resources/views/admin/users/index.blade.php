@@ -24,7 +24,7 @@
             @foreach($users as $row)
               <tr>
                 <td>{{ $row->id }}</td>
-                <td><img height="30" src="{{ $row->photo->file ? $row->photo->file : 'http://placehold.it/400*400' }}" alt="Profile Picture"></td>
+                <td><img src="{{ /*$row->photo->file ? $row->photo->file :*/ 'http://placehold.it/400*400'}}" alt="Profile Picture"></td>
                 <td>{{ $row->name }}</td>
                 <td>{{ $row->role->name }}</td>
                 <td>{{ $row->email }}</td>
@@ -41,5 +41,6 @@
           @endif
         </tbody>
       </table>
+        <div class="pagination col-sm-2 col-sm-offset-3">{{ $users->links() }}</div>
   </div>
 @endsection

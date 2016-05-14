@@ -2,7 +2,7 @@
 
 @section('content')
   <div class="col-sm-3">
-      <img src="{{ $user->photo->file ? $user->photo->file : 'http://placehold.it/400*400'}}" class="img-responsive img-round">
+      <img src="{{ /*$user->photo->file ? $user->photo->file :*/ 'http://placehold.it/400*400'}}" class="img-responsive img-round">
   </div>
   <div class="col-sm-7">
       <h2>Edit User</h2>

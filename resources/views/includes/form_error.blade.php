@@ -9,7 +9,7 @@
 @endif
 
 @if(Session::has('alert-msg'))
-    <div class="col-sm-3 col-sm-offset-4 {{Session::get('alert-bg-color')}}">
-        {{ Session::get('alert-msg') }}
+    <div class="col-sm-3 col-sm-offset-4">
+        <span class="{{ Session::get('alert-bg-color') }}">{{ Session::get('alert-msg') }}</span>
     </div>
 @endif
