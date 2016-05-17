@@ -24,7 +24,7 @@
             @foreach($users as $row)
               <tr>
                 <td>{{ $row->id }}</td>
-                <td><img src="{{ /*$row->photo->file ? $row->photo->file :*/ 'http://placehold.it/400*400'}}" alt="Profile Picture"></td>
+                <td><img src="{{ $row->photo->file ? $row->photo->file : 'http://placehold.it/400*400'}}" class="img-round" width="50" alt="Profile Picture"></td>
                 <td>{{ $row->name }}</td>
                 <td>{{ $row->role->name }}</td>
                 <td>{{ $row->email }}</td>

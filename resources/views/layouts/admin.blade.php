@@ -125,7 +125,6 @@
                             <li>
                                 <a href="{{ route('admin.users.index') }}">All Users</a>
                             </li>
-
                             <li>
                                 <a href="{{ route('admin.users.create') }}">Create User</a>
                             </li>
@@ -140,7 +139,6 @@
                             <li>
                                 <a href="{{ route('admin.posts.index') }}">All Posts</a>
                             </li>
-
                             <li>
                                 <a href="{{ route('admin.posts.create') }}">Create Post</a>
                             </li>
@@ -154,11 +152,11 @@
                         <a href="#"><i class="fa fa-wrench fa-fw"></i>Categories<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/categories">All Categories</a>
+                                <a href="{{ route('admin.category.index') }}">All Categories</a>
                             </li>
 
                             <li>
-                                <a href="/categories/create">Create Category</a>
+                                <a href="{{ route('admin.category.create') }}">Create Category</a>
                             </li>
 
                         </ul>

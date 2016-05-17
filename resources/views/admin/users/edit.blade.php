@@ -1,9 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-  <div class="col-sm-3">
-      <img src="{{ /*$user->photo->file ? $user->photo->file :*/ 'http://placehold.it/400*400'}}" class="img-responsive img-round">
-  </div>
   <div class="col-sm-7">
       <h2>Edit User</h2>
         @include('includes.form_error')
@@ -40,7 +37,9 @@
           <div class="form-group">
               {!! Form::submit('Delete User',['class'=>'btn btn-danger col-sm-2 col-sm-offset-1']) !!}
           </div>
-        {!! Form::close() !!} 
-        
+        {!! Form::close() !!}        
+  </div>
+  <div class="col-sm-3">
+      <img src="{{ $user->photo->file ? $user->photo->file : 'http://placehold.it/400*400'}}" class="img-responsive img-round">
   </div>
 @endsection

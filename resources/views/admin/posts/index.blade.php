@@ -24,16 +24,15 @@
             @foreach($posts as $post)
               <tr>
                 <td>{{ $post->id }}</td>
-                <td><img src="{{ /*$row->photo->file ? $row->photo->file :*/ 'http://placehold.it/400*400'}}" alt="Profile Picture"></td>
-                <td>{{ $post->title }}</td>
-                <td>{{ $post->body }}</td>
-                <td>{{ $post->category_id }}</td>
-                <td>{{ $post->photo->file }}</td>
+                <td>{{ $post->title }}</td>                
+                <td>{{ str_limit($post->body,120) }}</td>
+                <td>{{ $post->category->name }}</td>
+                <td><img src="{{ $post->photo->file ? $post->photo->file : 'http://placehold.it/400*400'}}" alt="Profile Picture" class="img-rounded" width="50" height="40"></td>
                 <td>{{ $post->user->name }}</td>                  
                 <td>{{ $post->created_at->diffForHumans() }}</td>
                 <td>{{ $post->updated_at->diffForHumans() }}</td>
-                <td><a href="{{ route('admin.users.edit',$post->id) }}">Edit</a></td>
-                <td>{!!Form::open(['method'=>'DELETE', 'action'=>['AdminUsersController@destroy',$post->id]])!!}
+                <td><a href="{{ route('admin.posts.edit',$post->id) }}">Edit</a></td>
+                <td>{!!Form::open(['method'=>'DELETE', 'action'=>['AdminPostsController@destroy',$post->id]])!!}
                       {!!Form::submit('Delete',['class'=>'col-md-9 btn-xs btn-danger'])!!}
                     {!!Form::close()!!}
                 </td>

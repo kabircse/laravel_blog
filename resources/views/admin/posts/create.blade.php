@@ -15,14 +15,14 @@
         </div>
         <div class="form-group">
             {!! Form::label('cateogy_id','Category') !!}
-            {!! Form::select('category_id',[''=>'Select One','a'=>'b'],null,['class'=>'form-control']) !!}
+            {!! Form::select('category_id',[''=>'Select One']+$category,null,['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
             {!! Form::label('photo_id','Picture') !!}
             {!! Form::file('photo_id',null,['class'=>'form-control']) !!}
         </div>          
         <div class="form-group">
-            {!! Form::submit('Create User',['class'=>'btn btn-primary']) !!}
+            {!! Form::submit('Create Post',['class'=>'btn btn-primary']) !!}
         </div>
         {!! Form::close() !!}
   </div>
