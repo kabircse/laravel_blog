@@ -15,6 +15,7 @@
             <th>User</th>
             <th>Created At</th>
             <th>Updated At</th>
+            <th>Comments</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
@@ -24,13 +25,14 @@
             @foreach($posts as $post)
               <tr>
                 <td>{{ $post->id }}</td>
-                <td>{{ $post->title }}</td>                
+                <td><a href="{{ route('home.post',$post->id) }}">{{ $post->title }}</a></td>                
                 <td>{{ str_limit($post->body,120) }}</td>
                 <td>{{ $post->category->name }}</td>
                 <td><img src="{{ $post->photo->file ? $post->photo->file : 'http://placehold.it/400*400'}}" alt="Profile Picture" class="img-rounded" width="50" height="40"></td>
                 <td>{{ $post->user->name }}</td>                  
                 <td>{{ $post->created_at->diffForHumans() }}</td>
                 <td>{{ $post->updated_at->diffForHumans() }}</td>
+                <td><a href="{{ route('admin.comment.show',$post->id) }}">Comments</td>                  
                 <td><a href="{{ route('admin.posts.edit',$post->id) }}">Edit</a></td>
                 <td>{!!Form::open(['method'=>'DELETE', 'action'=>['AdminPostsController@destroy',$post->id]])!!}
                       {!!Form::submit('Delete',['class'=>'col-md-9 btn-xs btn-danger'])!!}

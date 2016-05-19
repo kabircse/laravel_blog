@@ -10,6 +10,7 @@ use App\Photo;
 use App\Category;
 use Auth;
 use Session;
+use DB;
 class AdminPostsController extends Controller
 {
     /**
@@ -117,5 +118,11 @@ class AdminPostsController extends Controller
     public function notification($alert,$msg){
         Session::flash('alert-bg-color',$alert);
         Session::flash('alert-msg',$msg);
+    }
+    
+    public function post($id){
+      $post = Post::findOrFail($id);
+      //$post = DB::table('posts')->where('id',$id)->get();
+      return view('post',compact('post'));
     }
 }

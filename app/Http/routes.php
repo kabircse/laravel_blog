@@ -28,14 +28,18 @@ Route::get('/', function () {
 Route::group(['middleware' => 'web'], function () {
   Route::auth();
   Route::get('/home', 'HomeController@index');
-  Route::get('/admin',function(){
-    return view('admin.index');
-  });
+  Route::get('/post/{id}', ['as'=>'home.post', 'uses'=>'AdminPostsController@post']);
+
     
   Route::group(['middleware'=>'admin'],function(){
+    Route::get('/admin',function(){
+      return view('admin.index');
+    });
     Route::resource('admin/users','AdminUsersController');
     Route::resource('admin/posts','AdminPostsController');
     Route::resource('admin/category','AdminCategoriesController');
+    Route::resource('admin/comment','PostCommentsController');
+    Route::resource('admin/comment/reply','CommentRepliesController');
   });
 });
 

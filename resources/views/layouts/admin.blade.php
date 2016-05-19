@@ -142,6 +142,9 @@
                             <li>
                                 <a href="{{ route('admin.posts.create') }}">Create Post</a>
                             </li>
+                            <li>
+                                <a href="{{ route('admin.comment.index') }}">All Comments</a>
+                            </li>
 
                         </ul>
                         <!-- /.nav-second-level -->
