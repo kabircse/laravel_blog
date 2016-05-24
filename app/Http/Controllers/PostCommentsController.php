@@ -44,7 +44,8 @@ class PostCommentsController extends Controller
           'post_id' => $request->post_id,
           'author' => $user->name,
           'email' => $user->email,
-          'body' => $request->body
+          'body' => $request->body,
+          'photo_id' => $user->photo->file,
         );
         Comment::create($data);
         return redirect()->back();

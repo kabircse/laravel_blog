@@ -146,7 +146,8 @@
 
     <!-- jQuery -->
 <script src="{{asset('js/libs.js')}}"></script>
-
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+@yield('scripts')
 </body>
 
 </html>

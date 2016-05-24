@@ -119,10 +119,11 @@ class AdminPostsController extends Controller
         Session::flash('alert-bg-color',$alert);
         Session::flash('alert-msg',$msg);
     }
-    
+
     public function post($id){
       $post = Post::findOrFail($id);
       //$post = DB::table('posts')->where('id',$id)->get();
-      return view('post',compact('post'));
+      $comments = $post->comments()->whereIsActive(1)->get();
+      return view('post',compact('post','comments'));
     }
 }

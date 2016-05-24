@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-
+use Auth;
+use App\comment_reply;
 class CommentRepliesController extends Controller
 {
     /**
@@ -82,5 +83,19 @@ class CommentRepliesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function createReply(Request $request){
+        $user = Auth::user();
+        $data = array(
+          'comment_id' => $request->comment_id,
+          'is_active'  => '1',
+          'author' => $user->name,
+          'email' => $user->email,
+          'body' => $request->body,
+          'photo_id' => $user->photo->file
+        );
+        comment_reply::create($data);
+        return redirect()->back();
     }
 }
