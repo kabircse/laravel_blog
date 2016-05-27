@@ -62,9 +62,6 @@
                       {{ $row->body }}
                   @if(count($row->replies)>0)
                     @foreach ($row->replies as $reply)
-                      <!-- Nested Comment -->
-                      <div class="comment-reply-container">
-                          <button class="toggle-reply btn btn-primary pull-right">Reply</button>
                           <div id="nested-comment" class="media">
                               <a class="pull-left" href="#">
                                   <img width="40" class="media-object" src="{{ $reply->photo_id ? $reply->photo_id : 'http://placehold.it/64x64' }}" alt="">
@@ -76,7 +73,10 @@
                                   {{ $reply->body }}
                               </div>
                           <!-- End Nested Comment -->
-                              <div class="comment-reply">
+                            <!-- Nested Comment -->
+                            <div class="comment-reply-container">
+                                <button class="toggle-reply btn btn-primary pull-right">Reply</button>
+                              <div class="comment-reply col-sm-7">
                                   {!! Form::open(['method'=>'post', 'action'=>'CommentRepliesController@createReply', 'role'=>'form']) !!}
                                     <input type="hidden" name="comment_id" value="{{ $row->id }}">
                                     <div class="form-group">
@@ -98,9 +98,9 @@
   @endif
 @section('scripts')
   <script>
-      $(".comment-reply-container .toggle-reply").on("click",function(){
-          //$(this).next().slideToggle('slow');
-          $(this).next().show();
+      $(".comment-reply-container .toggle-reply").click(function(){
+          $(this).next().slideToggle('slow');
+          //$(this).next().show();
       });
   </script>
 @endsection

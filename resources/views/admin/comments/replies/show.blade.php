@@ -2,7 +2,7 @@
 
   @section('content')
     <div class="col-sm-9">
-        <h2>Comment List</h2>
+        <h2>Comment Reply List</h2>
         @include('includes.form_error')
         <table class="table table-hovered table-condensed">
           <thead>
@@ -12,31 +12,29 @@
               <td>Email</td>
               <td>Body</td>
               <td>View Post</td>
-              <td>View Replies</td>
               <td>Dis-approve</td>
               <td>Delete</td>
             </tr>
           </thead>
           <tbody>
-          @if($comments)
-            @foreach($comments as $comment)
+          @if(count($replies))
+            @foreach($replies as $reply)
               <tr>
-                <td>{{ $comment->id }}</td>
-                <td>{{ $comment->author }}</td>
-                <td>{{ $comment->email }}</td>
-                <td>{{ $comment->body }}</td>
-                <td><a href="{{ route('home.post',$comment->post_id) }}">View Post</a></td>
-                <td><a href="{{ route('admin.comment.reply.show',$comment->id) }}">View Replies</a></td>
+                <td>{{ $reply->id }}</td>
+                <td>{{ $reply->author }}</td>
+                <td>{{ $reply->email }}</td>
+                <td>{{ $reply->body }}</td>
+                <td><a href="{{ route('home.post',$reply->comment->post_id) }}">View Post</a></td>
                 <td>
-                    @if($comment->is_active==0)
-                      {!! Form::open(['method'=>'patch', 'action'=>['PostCommentsController@update',$comment->id], 'form'=>'role'])!!}
+                    @if($reply->is_active==0)
+                      {!! Form::open(['method'=>'patch', 'action'=>['CommentRepliesController@update',$reply->id], 'form'=>'role'])!!}
                       <input type="hidden" name="is_active" value="1">
                         <div class="form-group">
                           {!! Form::submit('Un-approve', ['class'=>'btn-xs btn-warning'])!!}
                       </div>
                       {!! Form::close() !!}
                      @else
-                      {!! Form::open(['method'=>'patch', 'action'=>['PostCommentsController@update',$comment->id], 'form'=>'role'])!!}
+                      {!! Form::open(['method'=>'patch', 'action'=>['CommentRepliesController@update',$reply->id], 'form'=>'role'])!!}
                         <input type="hidden" name="is_active" value="0">
                         <div class="form-group">
                           {!! Form::submit('Approve', ['class'=>'btn-xs btn-success'])!!}
@@ -45,7 +43,7 @@
                     @endif
                 </td>
                 <td>
-                  {!! Form::open(array('method'=>'delete', 'action'=>['PostCommentsController@destroy',$comment->id])) !!}
+                  {!! Form::open(array('method'=>'delete', 'action'=>['CommentRepliesController@destroy',$reply->id])) !!}
                     <div class="form-group">
                       {!! Form::submit('Delete', ['class'=>'btn-xs btn-danger']) !!}
                     </div>
@@ -55,7 +53,7 @@
             @endforeach
           @else
             <tr>
-              <td>No Comments</td>
+              <td class="text text-danger">No Replies</td>
             </tr>
           @endif
           </tbody>

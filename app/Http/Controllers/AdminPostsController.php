@@ -120,10 +120,18 @@ class AdminPostsController extends Controller
         Session::flash('alert-msg',$msg);
     }
 
-    public function post($id){
-      $post = Post::findOrFail($id);
+    public function post($slug){//$slug
+      $post = Post::findBySlugOrFail($slug);
       //$post = DB::table('posts')->where('id',$id)->get();
       $comments = $post->comments()->whereIsActive(1)->get();
       return view('post',compact('post','comments'));
     }
+    /*
+    It is without slugable, but id
+    public function post($id){//$slug
+      $post = Post::findOrFail($id);//findBySlugOrFail($slug);
+      //$post = DB::table('posts')->where('id',$id)->get();
+      $comments = $post->comments()->whereIsActive(1)->get();
+      return view('post',compact('post','comments'));
+    }*/
 }
