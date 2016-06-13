@@ -11,10 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+/*Route::get('/','BlogController@index');
+Route::get('/singlePost/{id}','BlogController@singlePost');*/
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -27,9 +25,9 @@ Route::get('/', function () {
 */
 Route::group(['middleware' => 'web'], function () {
   Route::auth();
-  Route::get('/home', 'HomeController@index');
+  Route::get('/', 'HomeController@index');
   Route::get('/post/{id}', ['as'=>'home.post', 'uses'=>'AdminPostsController@post']);
-
+  Route::get('/singlePost/{id}','HomeController@post');
 
   Route::group(['middleware'=>'admin'],function(){
     Route::get('/admin',function(){
