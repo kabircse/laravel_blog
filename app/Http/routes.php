@@ -27,7 +27,7 @@ Route::group(['middleware' => 'web'], function () {
   Route::auth();
   Route::get('/', 'HomeController@index');
   Route::get('/post/{id}', ['as'=>'home.post', 'uses'=>'AdminPostsController@post']);
-  Route::get('/singlePost/{id}','HomeController@post');
+  Route::get('/singlePost/{id}',['as'=>'home.singlePost', 'uses'=>'HomeController@post']);
 
   Route::group(['middleware'=>'admin'],function(){
     Route::get('/admin',function(){

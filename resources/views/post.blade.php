@@ -19,7 +19,8 @@
               <hr>
 
               <!-- Preview Image -->
-              <img class="img-responsive" src="{{ $post->photo->file ? $post->photo->file : 'http://placehold.it/900x300' }}" alt="">
+              <img class="img-responsive" src="{{ asset($post->photo->file) }}" alt="">
+              {{-- ?$post->photo->file : 'http://placehold.it/900x300'--}}
 
               <hr>
 

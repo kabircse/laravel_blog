@@ -24,22 +24,22 @@
         <div class="form-group">
             {!! Form::label('photo_id','Picture') !!}
             {!! Form::file('photo_id',null,['class'=>'form-control']) !!}
-        </div>          
+        </div>
         <div class="form-group">
             {!! Form::label('password','Password') !!}
             {!! Form::password('password',['class'=>'form-control']) !!}
-        </div>          
+        </div>
         <div class="form-group">
             {!! Form::submit('Update User',['class'=>'btn btn-primary col-sm-2 pull-left']) !!}
-        </div>          
+        </div>
         {!! Form::close() !!}
-        {!! Form::open(['method'=>'DELETE', 'action'=>['AdminUsersController@destroy',$user->id]]) !!}                   
+        {!! Form::open(['method'=>'DELETE', 'action'=>['AdminUsersController@destroy',$user->id]]) !!}
           <div class="form-group">
               {!! Form::submit('Delete User',['class'=>'btn btn-danger col-sm-2 col-sm-offset-1']) !!}
           </div>
-        {!! Form::close() !!}        
+        {!! Form::close() !!}
   </div>
   <div class="col-sm-3">
-      <img src="{{ $user->photo->file ? $user->photo->file : 'http://placehold.it/400*400'}}" class="img-responsive img-round">
+      <img src="{{ asset($user->photo->file)}}" class="img-responsive img-round">
   </div>
 @endsection

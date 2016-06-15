@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
-use App\post;
+use App\Post;
+use App\Category;
 class HomeController extends Controller
 {
     /**
@@ -25,11 +26,14 @@ class HomeController extends Controller
     public function index()
     {
         $posts = Post::paginate(10);
-        return view('home',compact('posts'));
+        $categories = Category::take(10)->get();
+        return view('home',compact('posts','categories'));
     }
-   public function singlePost($slug)
+   public function post($slug)
    {
-       $posts = Post::findBySlugOrFail($slug);
-       return view('post',compact('posts'));
+       $post = Post::findBySlugOrFail($slug);
+       $categories = Category::take(10)->get();
+       $comments = $post->comments()->whereIsActive(1)->get();
+       return view('post',compact('post','categories','comments'));
    }
 }
