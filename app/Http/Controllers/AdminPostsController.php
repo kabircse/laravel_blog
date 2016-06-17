@@ -124,7 +124,8 @@ class AdminPostsController extends Controller
       $post = Post::findBySlugOrFail($slug);
       //$post = DB::table('posts')->where('id',$id)->get();
       $comments = $post->comments()->whereIsActive(1)->get();
-      return view('post',compact('post','comments'));
+      $categories = Category::take(10)->get();
+      return view('post',compact('post','comments','categories'));
     }
     /*
     It is without slugable, but id

@@ -25,10 +25,10 @@
             @foreach($posts as $post)
               <tr>
                 <td>{{ $post->id }}</td>
-                <td><a href="{{ route('home.post',$post->slug) }}">{{ $post->title }}</a></td>{!!$post->id!!}                
+                <td><a href="{{ route('home.post',$post->slug) }}">{{ $post->title }}</a></td>{!!$post->id!!}
                 <td>{{ str_limit($post->body,120) }}</td>
                 <td>{{ $post->category->name }}</td>
-                <td><img src="{{ $post->photo->file ? $post->photo->file : 'http://placehold.it/400*400'}}" alt="Profile Picture" class="img-rounded" width="50" height="40"></td>
+                <td><img src="{{ asset($post->photo->file) }}" alt="Profile Picture" class="img-rounded" width="50" height="40"></td>
                 <td>{{ $post->user->name }}</td>
                 <td>{{ $post->created_at->diffForHumans() }}</td>
                 <td>{{ $post->updated_at->diffForHumans() }}</td>

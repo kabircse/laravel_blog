@@ -3,12 +3,12 @@
 @section('content')
   <div class="row">
       @include('includes.form_error')
-      <h2>Users</h2>          
+      <h2>Users</h2>
       <table class="table table-bordered table-hovered table-condensed">
         <thead>
           <tr>
             <th>No.</th>
-            <th>Photo</th>  
+            <th>Photo</th>
             <th>Name</th>
             <th>Role</th>
             <th>Email</th>
@@ -24,7 +24,7 @@
             @foreach($users as $row)
               <tr>
                 <td>{{ $row->id }}</td>
-                <td><img src="{{ $row->photo->file ? $row->photo->file : 'http://placehold.it/400*400'}}" class="img-round" width="50" alt="Profile Picture"></td>
+                <td><img src="{{ asset($row->photo->file) }}" class="img-rounded" width="50" alt="Profile Picture"></td>
                 <td>{{ $row->name }}</td>
                 <td>{{ $row->role->name }}</td>
                 <td>{{ $row->email }}</td>

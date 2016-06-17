@@ -29,10 +29,6 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-
-
-
 </head>
 
 <body id="admin-page">
@@ -48,7 +44,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Home</a>
+            <a class="navbar-brand" href="{{ url('/') }}">Visit Blog</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -355,8 +351,10 @@
 
 
 <!-- JavaScripts -->
+<!--
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+-->
 <!-- jQuery -->
 <script src="{{asset('js/libs.js')}}"></script>
 

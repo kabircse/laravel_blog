@@ -1,4 +1,4 @@
-@extends('layouts.blog-post')
+@extends('layouts.blog-home')
 
 @section('content')
               <!-- Blog Post -->
@@ -54,7 +54,7 @@
               @foreach($comments as $row)
               <div class="media">
                   <a class="pull-left" href="#">
-                      <img width="40" class="media-object" src="/uploads/images/profile_picture/{{ $row->photo_id ? $row->photo_id : 'http://placehold.it/64x64' }}" alt="">
+                      <img width="40" class="media-object" src="{{ asset($row->photo_id) }}" alt="">
                   </a>
                   <div class="media-body">
                       <h4 class="media-heading">{{ $row->author }}
@@ -65,7 +65,7 @@
                     @foreach ($row->replies as $reply)
                           <div id="nested-comment" class="media">
                               <a class="pull-left" href="#">
-                                  <img width="40" class="media-object" src="{{ $reply->photo_id ? $reply->photo_id : 'http://placehold.it/64x64' }}" alt="">
+                                  <img width="40" class="media-object" src="{{ asset($reply->photo_id) }}" alt="">
                               </a>
                               <div class="media-body">
                                   <h4 class="media-heading">{{ $reply->author }}

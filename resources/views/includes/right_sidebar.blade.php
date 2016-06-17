@@ -16,20 +16,22 @@
     </div>
 
     <!-- Blog Categories Well -->
-    <div class="well">
-        <h4>Categories</h4>
-        <div class="row">
-            <div class="col-lg-6">
-                <ul class="list-unstyled">
-                  @foreach($categories as $row)
-                    <li><a href="#">{{$row->name}}</a> </li>
-                  @endforeach
-                </ul>
-            </div>
-            <!-- /.col-lg-6 -->
-        </div>
-        <!-- /.row -->
-    </div>
+    @if(count($categories)>0)
+      <div class="well">
+          <h4>Categories</h4>
+          <div class="row">
+              <div class="col-lg-6">
+                  <ul class="list-unstyled">
+                    @foreach($categories as $row)
+                      <li><a href="{{ URL::to('home/categoryposts',$row->id) }}">{{$row->name}}</a> </li>
+                    @endforeach
+                  </ul>
+              </div>
+              <!-- /.col-lg-6 -->
+          </div>
+          <!-- /.row -->
+      </div>
+    @endif
 
     <!-- Side Widget Well -->
     <div class="well">

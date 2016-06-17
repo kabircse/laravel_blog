@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Blog Home</a>
+            <a class="navbar-brand" href="{{ url('/') }}">Blog Home</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -17,17 +17,22 @@
                     <a href="#">About</a>
                 </li>
                 <li>
-                    <a href="#">Services</a>
+                    <a href="#">History</a>
                 </li>
                 <li>
                     <a href="#">Contact</a>
                 </li>
-                <li>
-                  @if(Auth::check())
-                  <a href="{{url('/logout')}}">Logout</a>
-                  @else
+                @if(Auth::check())
+                  <li>
+                      <a href="{{ url('/admin/') }}">Dashboard</a>
+                  </li>
+                  <li>
+                      <a href="{{url('/logout')}}">Logout</a>
+                  </li>
+                @else
+                  <li>
                     <a href="{{url('/login')}}">Login</a>
-                </li>
+                  </li>
                 @endif
             </ul>
         </div>
